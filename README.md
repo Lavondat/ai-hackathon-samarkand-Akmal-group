@@ -1,3 +1,23 @@
+UzNavi – bu soddaligi va foydalanuvchilar uchun qulayligi bilan ajralib turadigan web sayt va mobil ilova. Bizning platformamiz, ayniqsa, B2B vakillari va yangi sayyohlar uchun mo‘ljallangan bo‘lib, ular bizning xizmatlarimiz bilan tanishishlari mumkin.
+
+Ilovamizning Asosiy Imkoniyatlari
+✅ AI yordamchi bilan taksi chaqirish – tez va qulay transport xizmati
+✅ Onlayn buyurtmalar – istalgan mahsulot yoki xizmatni bir marta bosish bilan buyurtma qiling
+✅ Xaridlar – eng yaxshi tovarlar va chegirmalar faqat siz uchun
+✅ Kartalar (offline/online) – internet bo‘lmasa ham ishlaydigan xaritalar
+✅ Favqulodda raqamlar – tez yordam, militsiya va boshqa muhim xizmatlar bilan bog‘lanish
+✅ Valyuta almashtirish joylari – eng yaqin va ishonchli valyuta ayirboshlash punktlari
+✅ Eng mashhur kafe va restoranlar – shahardagi eng yaxshi ovqatlanish joylari
+
+Ilovamiz zamonaviy, yorqin va intuitiv dizaynga ega bo‘lib, har bir foydalanuvchi uchun qulaylik yaratadi.
+
+Bizning Jamoa
+👩‍💻 Hamrayeva Nilufar – Backend Developer
+📊 Azamatova Guliz – Marketolog
+📈 Aziza Madrimova – Product Manager
+💻 Xayrullayev Nodir – Frontend Developer
+👑 Jahongirova Rayhona – CEO
+
 UzNavi: O zbekiston turizm sohasida innovatsion yechim
 1. Kirish
 Ushbu biznes reja "UzNavi" loyihasini O'zbekiston turizm sohasida innovatsion yechim sifatida taqdim etadi. Loyiha O'zbekistonga tashrif buyuradigan turistlar uchun maxsus mobil ilova
