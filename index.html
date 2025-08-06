@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UzNavi - Explore Uzbekistan with Ease</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            'bg-primary': '#1a1a1a',
+                            'bg-secondary': '#2d2d2d',
+                            'text-primary': '#ffffff',
+                            'text-secondary': '#a0aec0'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Dark mode styles */
+        .dark body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        .dark .bg-white {
+            background-color: #2d2d2d;
+        }
+        .dark .text-gray-800 {
+            color: #ffffff;
+        }
+        .dark .text-gray-600 {
+            color: #a0aec0;
+        }
+        .dark .border-gray-200 {
+            border-color: #4a5568;
+        }
+        .dark .bg-gray-50 {
+            background-color: #2d2d2d;
+        }
+        .dark .hover\:bg-gray-50:hover {
+            background-color: #3d3d3d;
+        }
+        .dark .hover\:text-gray-900:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="transition-colors duration-200">
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <a href="/" class="flex items-center">
+                    <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center text-white font-bold text-xl mr-3">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold text-gray-800">UzNavi</h1>
+                </a>
+            </div>
+            
+            <!-- Navigation -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-gray-600 hover:text-gray-900 py-2" data-translate="home">Home</a>
+                <a href="#features" class="nav-link text-gray-600 hover:text-gray-900 py-2" data-translate="features">Features</a>
+                <a href="#pricing" class="nav-link text-gray-600 hover:text-gray-900 py-2" data-translate="pricing">Pricing</a>
+                <a href="#footer-support" class="nav-link text-gray-600 hover:text-gray-900 py-2" data-translate="support">Support</a>
+            </nav>
+            
+            <!-- CTA Buttons -->
+            <div class="flex items-center space-x-4">
+                <div class="relative hidden md:block">
+                    <button id="language-toggle" class="flex items-center space-x-2 text-gray-600 hover:text-gray-900 px-4 py-2 rounded-lg font-medium">
+                        <i class="fas fa-globe"></i>
+                        <span>EN</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div id="language-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg py-2 z-50">
+                        <a href="#" class="block px-4 py-2 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700" data-lang="uz">
+                            <span class="mr-2">🇺🇿</span> O'zbekcha
+                        </a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700" data-lang="en">
+                            <span class="mr-2">🇬🇧</span> English
+                        </a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700" data-lang="ru">
+                            <span class="mr-2">🇷🇺</span> Русский
+                        </a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700" data-lang="fr">
+                            <span class="mr-2">🇫🇷</span> Français
+                        </a>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="hidden md:flex items-center justify-center w-10 h-10 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+                <button onclick="window.location.href='/signin'" class="hidden md:block text-gray-600 hover:text-gray-900 px-4 py-2 rounded-lg font-medium" data-translate="signIn">
+                    Sign In
+                </button>
+                <button onclick="window.location.href='/register'" class="gradient-bg hover:opacity-90 text-white px-6 py-2 rounded-lg font-medium pulse" data-translate="getStarted">
+                    Get Started
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg text-white">
+        <div class="container mx-auto px-6 py-20">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6" data-translate="exploreTitle">Explore Uzbekistan with Confidence</h1>
+                    <p class="text-xl text-blue-100 mb-8" data-translate="exploreDesc">
+                        Your ultimate travel companion in Uzbekistan. Find restaurants, hotels, cafes, banks, markets, 
+                        taxis and tourist attractions all in one place.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://apps.apple.com/app/uznavi" target="_blank" class="download-btn bg-white text-gray-800 hover:bg-gray-100 px-6 py-3 rounded-lg font-medium flex items-center justify-center">
+                            <i class="fab fa-apple mr-2 text-xl"></i>
+                            <div class="text-left">
+                                <div class="text-xs">Download on the</div>
+                                <div class="font-semibold">App Store</div>
+                            </div>
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.uznavi.app" target="_blank" class="download-btn bg-gray-900 text-white hover:bg-gray-800 px-6 py-3 rounded-lg font-medium flex items-center justify-center">
+                            <i class="fab fa-google-play mr-2 text-xl"></i>
+                            <div class="text-left">
+                                <div class="text-xs">Get it on</div>
+                                <div class="font-semibold">Google Play</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="map-container bg-white bg-opacity-20 backdrop-blur-sm relative">
+                        <!-- Placeholder for interactive map -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center p-8">
+                                <i class="fas fa-map-marked-alt text-white text-6xl mb-4 opacity-70"></i>
+                                <p class="text-white text-xl font-medium mb-2">Interactive Uzbekistan Map</p>
+                                <p class="text-blue-100">(Powered by Google Maps API)</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Location Marker -->
+                        <div class="absolute bottom-6 left-6 bg-white px-4 py-2 rounded-full shadow-md flex items-center">
+                            <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                            <span class="text-sm font-medium text-gray-800">📍 You are here</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate="whyChoose">Why Choose UzNavi?</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto" data-translate="whyChooseDesc">
+                    We provide everything you need to explore Uzbekistan with confidence and ease.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-white p-8 rounded-lg shadow-sm">
+                    <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center text-white text-xl mb-6">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800" data-translate="offlineMaps">Offline Maps</h3>
+                    <p class="text-gray-600" data-translate="offlineMapsDesc">
+                        Navigate without internet connection across Uzbekistan. Download maps for offline use and never get lost.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-white p-8 rounded-lg shadow-sm">
+                    <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center text-white text-xl mb-6">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800" data-translate="currencyExchange">Currency Exchange</h3>
+                    <p class="text-gray-600" data-translate="currencyExchangeDesc">
+                        Real-time currency rates and nearest exchange offices. Know the best places to exchange your money.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-white p-8 rounded-lg shadow-sm">
+                    <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center text-white text-xl mb-6">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800" data-translate="restaurantGuide">Restaurant Guide</h3>
+                    <p class="text-gray-600" data-translate="restaurantGuideDesc">
+                        Browse menus, prices, and reviews before visiting. Find the best local cuisine with our curated recommendations.
+                    </p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card bg-white p-8 rounded-lg shadow-sm">
+                    <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center text-white text-xl mb-6">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800" data-translate="hotelBooking">Hotel Booking</h3>
+                    <p class="text-gray-600" data-translate="hotelBookingDesc">
+                        Book hotels directly from the app with exclusive discounts. We partner with the best accommodations across Uzbekistan.
+                    </p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card bg-white p-8 rounded-lg shadow-sm">
+                    <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center text-white text-xl mb-6">
+                        <i class="fas fa-taxi"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800" data-translate="taxiService">Taxi Service</h3>
+                    <p class="text-gray-600" data-translate="taxiServiceDesc">
+                        Get special 10% discount on taxi rides. Compare prices between different taxi services and choose the best option.
+                    </p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card bg-white p-8 rounded-lg shadow-sm">
+                    <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center text-white text-xl mb-6">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800" data-translate="smartAlerts">Smart Alerts</h3>
+                    <p class="text-gray-600" data-translate="smartAlertsDesc">
+                        Stay updated with promotions, events and important notifications about places you plan to visit.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 text-white" style="background: linear-gradient(135deg, #667eea 0%, #10b981 100%);">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4" data-translate="pricingTitle">Simple, Transparent Pricing</h2>
+                <p class="text-xl text-blue-100 max-w-2xl mx-auto" data-translate="pricingDesc">
+                    Try all premium features for free. After that, choose the plan that works best for you.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Free Plan -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-white">
+                    <h3 class="text-xl font-semibold mb-2" data-translate="free">Free</h3>
+                    <p class="mb-6" data-translate="tryBasic">Try basic features</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">$0</span>
+                        <span data-translate="forever">/forever</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-2"></i>
+                            <span data-translate="basicOfflineMaps">Basic offline maps</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-2"></i>
+                            <span data-translate="limitedPoiSearch">Limited POI search</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-2"></i>
+                            <span data-translate="basicNavigation">Basic navigation</span>
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-times mr-2"></i>
+                            <span data-translate="noOfflineCityGuides">No offline city guides</span>
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-times mr-2"></i>
+                            <span data-translate="noPremiumFeatures">No premium features</span>
+                        </li>
+                    </ul>
+                    <button class="w-full py-3 border border-gray-300 dark:border-gray-600 rounded-lg font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700" data-translate="currentPlan">
+                        Current Plan
+                    </button>
+                </div>
+                
+                <!-- Premium Plan -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border-2 border-blue-500 relative text-gray-800 dark:text-white">
+                    <div class="absolute top-0 right-0 bg-blue-500 text-white text-xs font-semibold px-3 py-1 rounded-bl-lg rounded-tr-lg" data-translate="popular">
+                        POPULAR
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2" data-translate="premium">Premium</h3>
+                    <p class="mb-6" data-translate="mostPopularChoice">Most popular choice</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">$2.99</span>
+                        <span data-translate="per3Days">/3 days</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-2"></i>
+                            <span data-translate="allFreeFeatures">All free features</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-2"></i>
+                            <span data-translate="detailedOfflineMaps">Detailed offline maps</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-2"></i>
+                            <span data-translate="unlimitedPoiSearch">Unlimited POI search</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-2"></i>
+                            <span data-translate="offlineCityGuides">Offline city guides</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-2"></i>
+                            <span data-translate="allPremiumFeatures">All premium features</span>
+                        </li>
+                    </ul>
+                    <button class="w-full py-3 gradient-bg text-white rounded-lg font-medium hover:opacity-90" data-translate="upgradeNow">
+                        Upgrade Now
+                    </button>
+                </div>
+                
+                <!-- Business Plan -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-white">
+                    <h3 class="text-xl font-semibold mb-2" data-translate="business">Business</h3>
+                    <p class="mb-6" data-translate="forTourOperators">For tour operators</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">$25</span>
+                        <span data-translate="perMonth">/month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-2"></i>
+                            <span data-translate="allPremiumFeatures">All premium features</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-2"></i>
+                            <span data-translate="teamManagement">Team management</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-2"></i>
+                            <span data-translate="customBranding">Custom branding</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-2"></i>
+                            <span data-translate="apiAccess">API access</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-2"></i>
+                            <span data-translate="prioritySupport">Priority support</span>
+                        </li>
+                    </ul>
+                    <button class="w-full py-3 border border-gray-300 dark:border-gray-600 rounded-lg font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700" data-translate="contactSales">
+                        Contact Sales
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate="testimonialsTitle">What Our Users Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto" data-translate="testimonialsDesc">
+                    Don't just take our word for it. Here's what our users have to say about UzNavi.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 text-xl font-bold mr-4">
+                            AS
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800" data-translate="alexSmith">Alex Smith</h4>
+                            <p class="text-gray-500 text-sm" data-translate="travelBlogger">Travel Blogger</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4" data-translate="testimonial1Text">
+                        "UzNavi saved me so much time during my trip to Uzbekistan. The offline maps worked perfectly even in remote areas."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-500 text-xl font-bold mr-4">
+                            MJ
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800" data-translate="mariaJohnson">Maria Johnson</h4>
+                            <p class="text-gray-500 text-sm" data-translate="soloTraveler">Solo Traveler</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4" data-translate="testimonial2Text">
+                        "As a solo female traveler, I felt much safer navigating Uzbekistan with UzNavi. The taxi booking feature was especially helpful."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-500 text-xl font-bold mr-4">
+                            RK
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800" data-translate="robertKim">Robert Kim</h4>
+                            <p class="text-gray-500 text-sm" data-translate="businessTraveler">Business Traveler</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4" data-translate="testimonial3Text">
+                        "The currency exchange rates and ATM locations were incredibly accurate. Made my business trip much smoother."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 gradient-bg text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-6" data-translate="readyToExplore">Ready to Explore Uzbekistan?</h2>
+            <p class="text-xl text-blue-100 max-w-2xl mx-auto mb-8" data-translate="downloadToday">
+                Download UzNavi today and experience the country like never before.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://apps.apple.com/app/uznavi" target="_blank" class="download-btn bg-white text-gray-800 hover:bg-gray-100 px-6 py-3 rounded-lg font-medium flex items-center justify-center">
+                    <i class="fab fa-apple mr-2 text-xl"></i>
+                    <div class="text-left">
+                        <div class="text-xs">Download on the</div>
+                        <div class="font-semibold">App Store</div>
+                    </div>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.uznavi.app" target="_blank" class="download-btn bg-gray-900 text-white hover:bg-gray-800 px-6 py-3 rounded-lg font-medium flex items-center justify-center">
+                    <i class="fab fa-google-play mr-2 text-xl"></i>
+                    <div class="text-left">
+                        <div class="text-xs">Get it on</div>
+                        <div class="font-semibold">Google Play</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- About -->
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center text-white font-bold text-xl mr-3">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h1 class="text-xl font-bold" data-translate="uznavi">UzNavi</h1>
+                    </div>
+                    <p class="text-gray-400 mb-4" data-translate="aboutDesc">
+                        The ultimate travel companion for exploring Uzbekistan, helping tourists navigate the country with ease.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4" data-translate="quickLinks">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white" data-translate="home">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white" data-translate="features">Features</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white" data-translate="pricing">Pricing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white" data-translate="download">Download</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white" data-translate="blog">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div id="footer-support">
+                    <h3 class="text-lg font-semibold mb-4" data-translate="support">Support</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white" data-translate="faq">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white" data-translate="helpCenter">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white" data-translate="privacyPolicy">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white" data-translate="termsOfService">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white" data-translate="contactUs">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4" data-translate="contactUs">Contact Us</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-gray-400"></i>
+                            <span class="text-gray-400" data-translate="email">support@uznavi.uz</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3 text-gray-400"></i>
+                            <span class="text-gray-400" data-translate="phone">+998 91 702-98-86</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-gray-400"></i>
+                            <span class="text-gray-400" data-translate="address">Tashkent, Uzbekistan</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p data-translate="copyright">© 2025 UzNavi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Translations object
+        const translations = {
+            en: {
+                home: "Home",
+                features: "Features",
+                pricing: "Pricing",
+                support: "Support",
+                signIn: "Sign In",
+                getStarted: "Get Started",
+                exploreTitle: "Explore Uzbekistan with Confidence",
+                exploreDesc: "Your ultimate travel companion in Uzbekistan. Find restaurants, hotels, cafes, banks, markets, taxis and tourist attractions all in one place.",
+                downloadAppStore: "Download on the App Store",
+                downloadPlayStore: "Get it on Google Play",
+                whyChoose: "Why Choose UzNavi?",
+                whyChooseDesc: "We provide everything you need to explore Uzbekistan with confidence and ease.",
+                offlineMaps: "Offline Maps",
+                offlineMapsDesc: "Navigate without internet connection across Uzbekistan. Download maps for offline use and never get lost.",
+                currencyExchange: "Currency Exchange",
+                currencyExchangeDesc: "Real-time currency rates and nearest exchange offices. Know the best places to exchange your money.",
+                restaurantGuide: "Restaurant Guide",
+                restaurantGuideDesc: "Browse menus, prices, and reviews before visiting. Find the best local cuisine with our curated recommendations.",
+                hotelBooking: "Hotel Booking",
+                hotelBookingDesc: "Book hotels directly from the app with exclusive discounts. We partner with the best accommodations across Uzbekistan.",
+                taxiService: "Taxi Service",
+                taxiServiceDesc: "Get special 10% discount on taxi rides. Compare prices between different taxi services and choose the best option.",
+                smartAlerts: "Smart Alerts",
+                smartAlertsDesc: "Stay updated with promotions, events and important notifications about places you plan to visit.",
+                pricingTitle: "Simple, Transparent Pricing",
+                pricingDesc: "Try all premium features for free. After that, choose the plan that works best for you.",
+                free: "Free",
+                tryBasic: "Try basic features",
+                forever: "forever",
+                premium: "Premium",
+                mostPopular: "Most popular choice",
+                business: "Business",
+                forTourOperators: "For tour operators",
+                testimonialsTitle: "What Our Users Say",
+                testimonialsDesc: "Don't just take our word for it. Here's what our users have to say about UzNavi.",
+                readyToExplore: "Ready to Explore Uzbekistan?",
+                downloadToday: "Download UzNavi today and experience the country like never before.",
+                about: "About",
+                aboutDesc: "The ultimate travel companion for exploring Uzbekistan, helping tourists navigate the country with ease.",
+                quickLinks: "Quick Links",
+                contactUs: "Contact Us"
+            },
+            uz: {
+                home: "Bosh sahifa",
+                features: "Xususiyatlar",
+                pricing: "Narxlar",
+                support: "Yordam",
+                signIn: "Kirish",
+                getStarted: "Boshlash",
+                exploreTitle: "O'zbekistonda ishonch bilan sayohat qiling",
+                exploreDesc: "O'zbekistondagi eng yaxshi sayohat hamrohi. Restoranlar, mehmonxonalar, kafelar, banklar, bozorlar, taksilar va sayyohlik joylarini bitta joyda toping.",
+                downloadAppStore: "App Store-dan yuklab oling",
+                downloadPlayStore: "Google Play-dan yuklab oling",
+                whyChoose: "Nima uchun UzNavi?",
+                whyChooseDesc: "O'zbekistonda ishonch va qulaylik bilan sayohat qilish uchun barcha kerakli narsalarni taqdim etamiz.",
+                offlineMaps: "Ofline xaritalar",
+                offlineMapsDesc: "Internet aloqasisiz O'zbekiston bo'ylab sayohat qiling. Xaritalarni ofline ishlatish uchun yuklab oling va hech qachon yo'qolmaymang.",
+                currencyExchange: "Valyuta almashinuvi",
+                currencyExchangeDesc: "Real vaqt rejimida valyuta kurslari va eng yaqin valyuta almashinuv punktlari. Pulingizni almashinish uchun eng yaxshi joylarni biling.",
+                restaurantGuide: "Restoranlar bo'yicha yo'riqnoma",
+                restaurantGuideDesc: "Tashrif buyurishdan oldin menyular, narxlar va sharhlarni ko'rib chiqing. Bizning tanlangan tavsiyalarimiz bilan eng yaxshi mahalliy taomlarni toping.",
+                hotelBooking: "Mehmonxona bron qilish",
+                hotelBookingDesc: "Eksklyuziv chegirmalar bilan to'g'ridan-to'g'ri ilovadan mehmonxonalarni bron qiling. Biz O'zbekiston bo'ylab eng yaxshi mehmonxonalar bilan hamkorlik qilamiz.",
+                taxiService: "Taksi xizmati",
+                taxiServiceDesc: "Taksi sayohatlarida maxsus 10% chegirma oling. Turli taksi xizmatlari o'rtasidagi narxlarni solishtiring va eng yaxshi variantni tanlang.",
+                smartAlerts: "Aqlli bildirishnomalar",
+                smartAlertsDesc: "Tashrif buyurmoqchi bo'lgan joylar haqidagi aksiyalar, tadbirlar va muhim bildirishnomalar bilan yangilanishlardan xabardor bo'ling.",
+                pricingTitle: "Oddiy, shaffof narxlar",
+                pricingDesc: "Barcha premium xususiyatlarni bepul sinab ko'ring. Shundan so'ng, sizga eng mos keladigan rejani tanlang.",
+                free: "Bepul",
+                tryBasic: "Asosiy xususiyatlarni sinab ko'ring",
+                forever: "muddatsiz",
+                premium: "Premium",
+                mostPopular: "Eng mashhur tanlov",
+                business: "Biznes",
+                forTourOperators: "Sayyohlik operatorlari uchun",
+                testimonialsTitle: "Foydalanuvchilarimiz nima deyishadi",
+                testimonialsDesc: "Faqat bizning so'zlarimizga ishonmang. Mana foydalanuvchilarimiz UzNavi haqida nima deyishadi.",
+                readyToExplore: "O'zbekistoni kashf qilishga tayyormisiz?",
+                downloadToday: "UzNavi-ni bugun yuklab oling va mamlakatni hech qachon bo'lmaganday tajriba qiling.",
+                about: "Biz haqimizda",
+                aboutDesc: "O'zbekistonda sayohat qilishni osonlashtirish uchun eng yaxshi sayohat hamrohi.",
+                quickLinks: "Tezkor havolalar",
+                contactUs: "Biz bilan bog'lanish"
+            },
+            ru: {
+                home: "Главная",
+                features: "Функции",
+                pricing: "Цены",
+                support: "Поддержка",
+                signIn: "Войти",
+                getStarted: "Начать",
+                exploreTitle: "Исследуйте Узбекистан с уверенностью",
+                exploreDesc: "Ваш лучший спутник в путешествии по Узбекистану. Найдите рестораны, отели, кафе, банки, рынки, такси и туристические достопримечательности в одном месте.",
+                downloadAppStore: "Скачать в App Store",
+                downloadPlayStore: "Скачать в Google Play",
+                whyChoose: "Почему UzNavi?",
+                whyChooseDesc: "Мы предоставляем все необходимое для уверенного и удобного путешествия по Узбекистану.",
+                offlineMaps: "Офлайн карты",
+                offlineMapsDesc: "Навигация без интернет-соединения по всему Узбекистану. Скачайте карты для использования в офлайн режиме и никогда не теряйтесь.",
+                currencyExchange: "Обмен валюты",
+                currencyExchangeDesc: "Курсы валют в реальном времени и ближайшие обменные пункты. Знайте лучшие места для обмена ваших денег.",
+                restaurantGuide: "Путеводитель по ресторанам",
+                restaurantGuideDesc: "Просматривайте меню, цены и отзывы перед посещением. Найдите лучшую местную кухню с нашими тщательно подобранными рекомендациями.",
+                hotelBooking: "Бронирование отелей",
+                hotelBookingDesc: "Бронируйте отели прямо из приложения со специальными скидками. Мы сотрудничаем с лучшими отелями по всему Узбекистану.",
+                taxiService: "Служба такси",
+                taxiServiceDesc: "Получите специальную скидку 10% на поездки на такси. Сравнивайте цены между различными службами такси и выбирайте лучший вариант.",
+                smartAlerts: "Умные уведомления",
+                smartAlertsDesc: "Будьте в курсе акций, мероприятий и важных уведомлений о местах, которые вы планируете посетить.",
+                pricingTitle: "Простые, прозрачные цены",
+                pricingDesc: "Попробуйте все премиум-функции бесплатно. После этого выберите план, который лучше всего подходит для вас.",
+                free: "Бесплатно",
+                tryBasic: "Попробуйте базовые функции",
+                forever: "навсегда",
+                premium: "Премиум",
+                mostPopular: "Самый популярный выбор",
+                business: "Бизнес",
+                forTourOperators: "Для туроператоров",
+                testimonialsTitle: "Что говорят наши пользователи",
+                testimonialsDesc: "Не верьте нам на слово. Вот что говорят наши пользователи о UzNavi.",
+                readyToExplore: "Готовы исследовать Узбекистан?",
+                downloadToday: "Скачайте UzNavi сегодня и испытайте страну как никогда раньше.",
+                about: "О нас",
+                aboutDesc: "Лучший спутник для путешествий по Узбекистану, помогающий туристам легко ориентироваться в стране.",
+                quickLinks: "Быстрые ссылки",
+                contactUs: "Связаться с нами"
+            },
+            fr: {
+                home: "Accueil",
+                features: "Fonctionnalités",
+                pricing: "Tarifs",
+                support: "Support",
+                signIn: "Connexion",
+                getStarted: "Commencer",
+                exploreTitle: "Explorez l'Ouzbékistan en toute confiance",
+                exploreDesc: "Votre compagnon de voyage ultime en Ouzbékistan. Trouvez des restaurants, hôtels, cafés, banques, marchés, taxis et attractions touristiques en un seul endroit.",
+                downloadAppStore: "Télécharger sur l'App Store",
+                downloadPlayStore: "Télécharger sur Google Play",
+                whyChoose: "Pourquoi choisir UzNavi?",
+                whyChooseDesc: "Nous fournissons tout ce dont vous avez besoin pour explorer l'Ouzbékistan avec confiance et facilité.",
+                offlineMaps: "Cartes hors ligne",
+                offlineMapsDesc: "Naviguez sans connexion Internet à travers l'Ouzbékistan. Téléchargez des cartes pour une utilisation hors ligne et ne vous perdez jamais.",
+                currencyExchange: "Change de devises",
+                currencyExchangeDesc: "Taux de change en temps réel et bureaux de change les plus proches. Connaissez les meilleurs endroits pour échanger votre argent.",
+                restaurantGuide: "Guide des restaurants",
+                restaurantGuideDesc: "Parcourez les menus, les prix et les avis avant de visiter. Trouvez la meilleure cuisine locale avec nos recommandations soigneusement sélectionnées.",
+                hotelBooking: "Réservation d'hôtel",
+                hotelBookingDesc: "Réservez des hôtels directement depuis l'application avec des réductions exclusives. Nous collaborons avec les meilleurs hébergements à travers l'Ouzbékistan.",
+                taxiService: "Service de taxi",
+                taxiServiceDesc: "Obtenez une réduction spéciale de 10% sur les courses en taxi. Comparez les prix entre différents services de taxi et choisissez la meilleure option.",
+                smartAlerts: "Alertes intelligentes",
+                smartAlertsDesc: "Restez informé des promotions, événements et notifications importantes sur les lieux que vous prévoyez de visiter.",
+                pricingTitle: "Tarifs simples et transparents",
+                pricingDesc: "Essayez toutes les fonctionnalités premium gratuitement. Ensuite, choisissez le forfait qui vous convient le mieux.",
+                free: "Gratuit",
+                tryBasic: "Essayez les fonctionnalités de base",
+                forever: "pour toujours",
+                premium: "Premium",
+                mostPopular: "Choix le plus populaire",
+                business: "Business",
+                forTourOperators: "Pour les tour-opérateurs",
+                testimonialsTitle: "Ce que disent nos utilisateurs",
+                testimonialsDesc: "Ne nous croyez pas sur parole. Voici ce que nos utilisateurs disent de UzNavi.",
+                readyToExplore: "Prêt à explorer l'Ouzbékistan?",
+                downloadToday: "Téléchargez UzNavi aujourd'hui et découvrez le pays comme jamais auparavant.",
+                about: "À propos",
+                aboutDesc: "Le meilleur compagnon de voyage pour explorer l'Ouzbékistan, aidant les touristes à naviguer facilement dans le pays.",
+                quickLinks: "Liens rapides",
+                contactUs: "Contactez-nous"
+            }
+        };
+
+        // Function to update text content
+        function updateLanguage(lang) {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        // Simple script for mobile menu toggle and smooth scrolling
+        document.addEventListener('DOMContentLoaded', function() {
+            // Language selector functionality
+            const languageToggle = document.getElementById('language-toggle');
+            const languageDropdown = document.getElementById('language-dropdown');
+            const languageLinks = languageDropdown.querySelectorAll('a');
+            
+            // Toggle language dropdown
+            languageToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                languageDropdown.classList.toggle('hidden');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!languageToggle.contains(e.target) && !languageDropdown.contains(e.target)) {
+                    languageDropdown.classList.add('hidden');
+                }
+            });
+            
+            // Handle language selection
+            languageLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const lang = link.getAttribute('data-lang');
+                    const langText = link.textContent.trim();
+                    const langCode = lang.toUpperCase();
+                    
+                    // Update button text
+                    languageToggle.querySelector('span').textContent = langCode;
+                    
+                    // Save language preference
+                    localStorage.setItem('language', lang);
+                    
+                    // Update page content
+                    updateLanguage(lang);
+                    
+                    // Hide dropdown
+                    languageDropdown.classList.add('hidden');
+                });
+            });
+            
+            // Restore saved language preference
+            const savedLang = localStorage.getItem('language') || 'en';
+            const savedLangLink = languageDropdown.querySelector(`[data-lang="${savedLang}"]`);
+            if (savedLangLink) {
+                languageToggle.querySelector('span').textContent = savedLang.toUpperCase();
+                updateLanguage(savedLang);
+            } else {
+                // If no saved language or invalid language, default to English
+                languageToggle.querySelector('span').textContent = 'EN';
+                updateLanguage('en');
+            }
+
+            // Theme toggle functionality
+            const themeToggle = document.getElementById('theme-toggle');
+            const html = document.documentElement;
+            
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                html.classList.add('dark');
+            }
+            
+            // Theme toggle click handler
+            themeToggle.addEventListener('click', () => {
+                html.classList.toggle('dark');
+                const isDark = html.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Animation for feature cards on scroll
+            const featureCards = document.querySelectorAll('.feature-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            featureCards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+
+            // Add click handlers for buttons
+            document.querySelectorAll('button[onclick]').forEach(button => {
+                button.addEventListener('click', function() {
+                    const url = this.getAttribute('onclick').match(/window\.location\.href='([^']+)'/)[1];
+                    window.location.href = url;
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
